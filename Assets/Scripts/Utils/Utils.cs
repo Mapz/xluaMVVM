@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using System.Security.Cryptography;
+using XLua;
 
 namespace Core.Utils
 {
@@ -273,6 +274,8 @@ namespace Core.Utils
         }
 
         private static int genID = 1000000;
+        
+        [LuaCallCSharp]
         public static int GenID()
         {
             return genID++;

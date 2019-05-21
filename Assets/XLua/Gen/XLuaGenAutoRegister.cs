@@ -22,6 +22,9 @@ namespace XLua.CSObjectWrap
         static void wrapInit0(LuaEnv luaenv, ObjectTranslator translator)
         {
         
+            translator.DelayWrapLoader(typeof(UnityEngineObjectExtention), UnityEngineObjectExtentionWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(object), SystemObjectWrap.__Register);
         
         
@@ -115,6 +118,9 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(Tutorial.DerivedClass), TutorialDerivedClassWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(Tutorial.DerivedClass.TestEnumInner), TutorialDerivedClassTestEnumInnerWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(Tutorial.ICalc), TutorialICalcWrap.__Register);
         
         
@@ -166,18 +172,15 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(Mapz.Core.Lua.LuaClassBehaviour), MapzCoreLuaLuaClassBehaviourWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Tutorial.DerivedClass.TestEnumInner), TutorialDerivedClassTestEnumInnerWrap.__Register);
-        
-        
             translator.DelayWrapLoader(typeof(UnityEngine.Animator), UnityEngineAnimatorWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.StateMachineBehaviour), UnityEngineStateMachineBehaviourWrap.__Register);
         
         }
         
         static void wrapInit1(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.StateMachineBehaviour), UnityEngineStateMachineBehaviourWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.AnimatorClipInfo), UnityEngineAnimatorClipInfoWrap.__Register);
         
@@ -328,13 +331,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(UnityEngine.CachedAssetBundle), UnityEngineCachedAssetBundleWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.Cache), UnityEngineCacheWrap.__Register);
-        
         }
         
         static void wrapInit2(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.Cache), UnityEngineCacheWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.Caching), UnityEngineCachingWrap.__Register);
         
@@ -485,13 +488,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(UnityEngine.OcclusionPortal), UnityEngineOcclusionPortalWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.OcclusionArea), UnityEngineOcclusionAreaWrap.__Register);
-        
         }
         
         static void wrapInit3(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.OcclusionArea), UnityEngineOcclusionAreaWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.Flare), UnityEngineFlareWrap.__Register);
         
@@ -642,13 +645,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(UnityEngine.LayerMask), UnityEngineLayerMaskWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.RangeInt), UnityEngineRangeIntWrap.__Register);
-        
         }
         
         static void wrapInit4(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.RangeInt), UnityEngineRangeIntWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.ScriptableObject), UnityEngineScriptableObjectWrap.__Register);
         
@@ -799,13 +802,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(UnityEngine.ParticleSystem.LimitVelocityOverLifetimeModule), UnityEngineParticleSystemLimitVelocityOverLifetimeModuleWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.ParticleSystem.InheritVelocityModule), UnityEngineParticleSystemInheritVelocityModuleWrap.__Register);
-        
         }
         
         static void wrapInit5(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.ParticleSystem.InheritVelocityModule), UnityEngineParticleSystemInheritVelocityModuleWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.ParticleSystem.ForceOverLifetimeModule), UnityEngineParticleSystemForceOverLifetimeModuleWrap.__Register);
         
@@ -956,13 +959,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(UnityEngine.CapsulecastCommand), UnityEngineCapsulecastCommandWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.BoxcastCommand), UnityEngineBoxcastCommandWrap.__Register);
-        
         }
         
         static void wrapInit6(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.BoxcastCommand), UnityEngineBoxcastCommandWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.PhysicsScene2D), UnityEnginePhysicsScene2DWrap.__Register);
         
@@ -1113,13 +1116,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(UnityEngine.UILineInfo), UnityEngineUILineInfoWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.UIVertex), UnityEngineUIVertexWrap.__Register);
-        
         }
         
         static void wrapInit7(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.UIVertex), UnityEngineUIVertexWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.Font), UnityEngineFontWrap.__Register);
         
@@ -1270,13 +1273,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(UnityEngine.UI.Selectable), UnityEngineUISelectableWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(UnityEngine.UI.Slider), UnityEngineUISliderWrap.__Register);
-        
         }
         
         static void wrapInit8(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(UnityEngine.UI.Slider), UnityEngineUISliderWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(UnityEngine.UI.Slider.SliderEvent), UnityEngineUISliderSliderEventWrap.__Register);
         
@@ -1356,6 +1359,9 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(ManagerComponent), ManagerComponentWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(WithAnID), WithAnIDWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(test), testWrap.__Register);
         
         
@@ -1366,6 +1372,9 @@ namespace XLua.CSObjectWrap
         
         
             translator.DelayWrapLoader(typeof(Tutorial.CSCallLua), TutorialCSCallLuaWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(Tutorial.CSCallLua.DClass), TutorialCSCallLuaDClassWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(Tutorial.ByFile), TutorialByFileWrap.__Register);
@@ -1416,7 +1425,92 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(Mapz.Core.Component.TimerManager), MapzCoreComponentTimerManagerWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Tutorial.CSCallLua.DClass), TutorialCSCallLuaDClassWrap.__Register);
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaIndexes), MikuLuaProfilerLuaIndexesWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.MonoPInvokeCallbackAttribute), MikuLuaProfilerMonoPInvokeCallbackAttributeWrap.__Register);
+        
+        }
+        
+        static void wrapInit9(LuaEnv luaenv, ObjectTranslator translator)
+        {
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaDLL), MikuLuaProfilerLuaDLLWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaProfiler), MikuLuaProfilerLuaProfilerWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.NativeHelper), MikuLuaProfilerNativeHelperWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaConf), MikuLuaProfilerLuaConfWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.StringLoadInfo), MikuLuaProfilerStringLoadInfoWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.BytesLoadInfo), MikuLuaProfilerBytesLoadInfoWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.Token), MikuLuaProfilerTokenWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.JumpToken), MikuLuaProfilerJumpTokenWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LiteralToken), MikuLuaProfilerLiteralTokenWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.TypedToken), MikuLuaProfilerTypedTokenWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.StringToken), MikuLuaProfilerStringTokenWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.NameToken), MikuLuaProfilerNameTokenWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.NumberToken), MikuLuaProfilerNumberTokenWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LLex), MikuLuaProfilerLLexWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.Parse), MikuLuaProfilerParseWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.NetBase), MikuLuaProfilerNetBaseWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaRefInfo), MikuLuaProfilerLuaRefInfoWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaDiffInfo), MikuLuaProfilerLuaDiffInfoWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.Sample), MikuLuaProfilerSampleWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.HookLuaSetup), MikuLuaProfilerHookLuaSetupWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.Menu), MikuLuaProfilerMenuWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaHook), MikuLuaProfilerLuaHookWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaLib), MikuLuaProfilerLuaLibWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.MikuLuaProfilerLuaProfilerWrap), MikuLuaProfilerMikuLuaProfilerLuaProfilerWrapWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.NetWorkClient), MikuLuaProfilerNetWorkClientWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(MikuLuaProfiler.LuaDeepProfilerSetting), MikuLuaProfilerLuaDeepProfilerSettingWrap.__Register);
         
         
         
@@ -1443,14 +1537,16 @@ namespace XLua.CSObjectWrap
             
             wrapInit8(luaenv, translator);
             
+            wrapInit9(luaenv, translator);
+            
             
             translator.AddInterfaceBridgeCreator(typeof(System.Collections.IEnumerator), SystemCollectionsIEnumeratorBridge.__Create);
-            
-            translator.AddInterfaceBridgeCreator(typeof(XLuaTest.IExchanger), XLuaTestIExchangerBridge.__Create);
             
             translator.AddInterfaceBridgeCreator(typeof(Tutorial.CSCallLua.ItfD), TutorialCSCallLuaItfDBridge.__Create);
             
             translator.AddInterfaceBridgeCreator(typeof(XLuaTest.InvokeLua.ICalc), XLuaTestInvokeLuaICalcBridge.__Create);
+            
+            translator.AddInterfaceBridgeCreator(typeof(XLuaTest.IExchanger), XLuaTestIExchangerBridge.__Create);
             
         }
         
@@ -1474,31 +1570,44 @@ namespace XLua
 	internal partial class InternalGlobals
     {
 	    
-		delegate UnityEngine.PhysicsScene __GEN_DELEGATE0( UnityEngine.SceneManagement.Scene scene);
+		delegate bool __GEN_DELEGATE0( UnityEngine.Object o);
 		
-		delegate UnityEngine.PhysicsScene2D __GEN_DELEGATE1( UnityEngine.SceneManagement.Scene scene);
+		delegate UnityEngine.PhysicsScene __GEN_DELEGATE1( UnityEngine.SceneManagement.Scene scene);
 		
-		delegate object[] __GEN_DELEGATE2( XLua.LuaTable _luaTable,  string _funName,  object[] _args);
+		delegate UnityEngine.PhysicsScene2D __GEN_DELEGATE2( UnityEngine.SceneManagement.Scene scene);
 		
 		delegate object[] __GEN_DELEGATE3( XLua.LuaTable _luaTable,  string _funName,  object[] _args);
 		
-		delegate XLua.LuaFunction __GEN_DELEGATE4( XLua.LuaTable _luaTable,  string _funName);
+		delegate object[] __GEN_DELEGATE4( XLua.LuaTable _luaTable,  string _funName,  object[] _args);
+		
+		delegate XLua.LuaFunction __GEN_DELEGATE5( XLua.LuaTable _luaTable,  string _funName);
 		
 	    static InternalGlobals()
 		{
 		    extensionMethodMap = new Dictionary<Type, IEnumerable<MethodInfo>>()
 			{
 			    
-				{typeof(UnityEngine.SceneManagement.Scene), new List<MethodInfo>(){
+				{typeof(UnityEngine.Object), new List<MethodInfo>(){
 				
-				  new __GEN_DELEGATE0(UnityEngine.PhysicsSceneExtensions.GetPhysicsScene)
+				  new __GEN_DELEGATE0(UnityEngineObjectExtention.IsNull)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE1(UnityEngine.PhysicsSceneExtensions2D.GetPhysicsScene2D)
+				}},
+				
+				{typeof(UnityEngine.SceneManagement.Scene), new List<MethodInfo>(){
+				
+				  new __GEN_DELEGATE1(UnityEngine.PhysicsSceneExtensions.GetPhysicsScene)
+#if UNITY_WSA && !UNITY_EDITOR
+                                      .GetMethodInfo(),
+#else
+                                      .Method,
+#endif
+				
+				  new __GEN_DELEGATE2(UnityEngine.PhysicsSceneExtensions2D.GetPhysicsScene2D)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
@@ -1509,21 +1618,21 @@ namespace XLua
 				
 				{typeof(XLua.LuaTable), new List<MethodInfo>(){
 				
-				  new __GEN_DELEGATE2(Mapz.Core.Lua.XLuaExtentions.Call)
+				  new __GEN_DELEGATE3(Mapz.Core.Lua.XLuaExtentions.Call)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE3(Mapz.Core.Lua.XLuaExtentions.CallSelf)
+				  new __GEN_DELEGATE4(Mapz.Core.Lua.XLuaExtentions.CallSelf)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else
                                       .Method,
 #endif
 				
-				  new __GEN_DELEGATE4(Mapz.Core.Lua.XLuaExtentions.GetFun)
+				  new __GEN_DELEGATE5(Mapz.Core.Lua.XLuaExtentions.GetFun)
 #if UNITY_WSA && !UNITY_EDITOR
                                       .GetMethodInfo(),
 #else

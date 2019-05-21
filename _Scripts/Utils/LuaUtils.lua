@@ -1,4 +1,5 @@
 ResManager = CS.Mapz.Core.Component.ResManager
+GenID = CS.Core.Utils.Utils.GenID
 
 function table.is_empty(t)
     return _G.next(t) == nil

@@ -2,6 +2,83 @@
 
 <linker>
 
+	<assembly fullname="Assembly-CSharp">
+	    <type fullname="UnityEngineObjectExtention" preserve="all"/>
+		<type fullname="UnityEngineObjectExtention" preserve="all"/>
+		<type fullname="Tutorial.BaseClass" preserve="all"/>
+		<type fullname="Tutorial.TestEnum" preserve="all"/>
+		<type fullname="Tutorial.DerivedClass" preserve="all"/>
+		<type fullname="Tutorial.DerivedClass+TestEnumInner" preserve="all"/>
+		<type fullname="Tutorial.ICalc" preserve="all"/>
+		<type fullname="Tutorial.DerivedClassExtensions" preserve="all"/>
+		<type fullname="XLuaTest.LuaBehaviour" preserve="all"/>
+		<type fullname="XLuaTest.Pedding" preserve="all"/>
+		<type fullname="XLuaTest.MyStruct" preserve="all"/>
+		<type fullname="XLuaTest.MyEnum" preserve="all"/>
+		<type fullname="XLuaTest.NoGc" preserve="all"/>
+		<type fullname="XLuaTest.BaseTest" preserve="all"/>
+		<type fullname="XLuaTest.Foo1Parent" preserve="all"/>
+		<type fullname="XLuaTest.Foo2Parent" preserve="all"/>
+		<type fullname="XLuaTest.Foo1Child" preserve="all"/>
+		<type fullname="XLuaTest.Foo2Child" preserve="all"/>
+		<type fullname="XLuaTest.Foo" preserve="all"/>
+		<type fullname="XLuaTest.FooExtension" preserve="all"/>
+		<type fullname="Mapz.Core.Timer" preserve="all"/>
+		<type fullname="Mapz.Core.Lua.LuaClassBehaviour" preserve="all"/>
+		<type fullname="ManagerComponent" preserve="all"/>
+		<type fullname="WithAnID" preserve="all"/>
+		<type fullname="test" preserve="all"/>
+		<type fullname="ExampleGenConfig" preserve="all"/>
+		<type fullname="LuaCallCs" preserve="all"/>
+		<type fullname="Tutorial.CSCallLua" preserve="all"/>
+		<type fullname="Tutorial.CSCallLua+DClass" preserve="all"/>
+		<type fullname="Tutorial.ByFile" preserve="all"/>
+		<type fullname="Tutorial.ByString" preserve="all"/>
+		<type fullname="Tutorial.CustomLoader" preserve="all"/>
+		<type fullname="Tutorial.Param1" preserve="all"/>
+		<type fullname="xLuaMVVM.Assets.MVVM.Wrap.Text" preserve="all"/>
+		<type fullname="Core.BaseObject" preserve="all"/>
+		<type fullname="Core.Utils.Utils" preserve="all"/>
+		<type fullname="Mapz.Config" preserve="all"/>
+		<type fullname="Mapz.GameEntry" preserve="all"/>
+		<type fullname="Mapz.Core.GameMain" preserve="all"/>
+		<type fullname="Mapz.Core.Resource.FileUtil" preserve="all"/>
+		<type fullname="Mapz.Core.Lua.XLuaExtentions" preserve="all"/>
+		<type fullname="Mapz.Core.Lua.Injection" preserve="all"/>
+		<type fullname="Mapz.Core.Component.LuaManager" preserve="all"/>
+		<type fullname="Mapz.Core.Component.ResManager" preserve="all"/>
+		<type fullname="Mapz.Core.Component.TimerManager" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaIndexes" preserve="all"/>
+		<type fullname="MikuLuaProfiler.MonoPInvokeCallbackAttribute" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaDLL" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaProfiler" preserve="all"/>
+		<type fullname="MikuLuaProfiler.NativeHelper" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaConf" preserve="all"/>
+		<type fullname="MikuLuaProfiler.StringLoadInfo" preserve="all"/>
+		<type fullname="MikuLuaProfiler.BytesLoadInfo" preserve="all"/>
+		<type fullname="MikuLuaProfiler.Token" preserve="all"/>
+		<type fullname="MikuLuaProfiler.JumpToken" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LiteralToken" preserve="all"/>
+		<type fullname="MikuLuaProfiler.TypedToken" preserve="all"/>
+		<type fullname="MikuLuaProfiler.StringToken" preserve="all"/>
+		<type fullname="MikuLuaProfiler.NameToken" preserve="all"/>
+		<type fullname="MikuLuaProfiler.NumberToken" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LLex" preserve="all"/>
+		<type fullname="MikuLuaProfiler.Parse" preserve="all"/>
+		<type fullname="MikuLuaProfiler.NetBase" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaRefInfo" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaDiffInfo" preserve="all"/>
+		<type fullname="MikuLuaProfiler.Sample" preserve="all"/>
+		<type fullname="MikuLuaProfiler.HookLuaSetup" preserve="all"/>
+		<type fullname="MikuLuaProfiler.Menu" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaHook" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaLib" preserve="all"/>
+		<type fullname="MikuLuaProfiler.MikuLuaProfilerLuaProfilerWrap" preserve="all"/>
+		<type fullname="MikuLuaProfiler.NetWorkClient" preserve="all"/>
+		<type fullname="MikuLuaProfiler.LuaDeepProfilerSetting" preserve="all"/>
+		
+	</assembly>
+
 	<assembly fullname="mscorlib">
 	    <type fullname="System.Object" preserve="all"/>
 		<type fullname="System.Collections.Generic.List`1[System.Int32]" preserve="all"/>
@@ -229,52 +306,6 @@
 		<type fullname="UnityEngine.ParticleCollisionEvent" preserve="all"/>
 		<type fullname="UnityEngine.ParticleSystemRenderer" preserve="all"/>
 		<type fullname="UnityEngine.ParticleSystemForceField" preserve="all"/>
-		
-	</assembly>
-
-	<assembly fullname="Assembly-CSharp">
-	    <type fullname="Tutorial.BaseClass" preserve="all"/>
-		<type fullname="Tutorial.TestEnum" preserve="all"/>
-		<type fullname="Tutorial.DerivedClass" preserve="all"/>
-		<type fullname="Tutorial.ICalc" preserve="all"/>
-		<type fullname="Tutorial.DerivedClassExtensions" preserve="all"/>
-		<type fullname="XLuaTest.LuaBehaviour" preserve="all"/>
-		<type fullname="XLuaTest.Pedding" preserve="all"/>
-		<type fullname="XLuaTest.MyStruct" preserve="all"/>
-		<type fullname="XLuaTest.MyEnum" preserve="all"/>
-		<type fullname="XLuaTest.NoGc" preserve="all"/>
-		<type fullname="XLuaTest.BaseTest" preserve="all"/>
-		<type fullname="XLuaTest.Foo1Parent" preserve="all"/>
-		<type fullname="XLuaTest.Foo2Parent" preserve="all"/>
-		<type fullname="XLuaTest.Foo1Child" preserve="all"/>
-		<type fullname="XLuaTest.Foo2Child" preserve="all"/>
-		<type fullname="XLuaTest.Foo" preserve="all"/>
-		<type fullname="XLuaTest.FooExtension" preserve="all"/>
-		<type fullname="Mapz.Core.Timer" preserve="all"/>
-		<type fullname="Mapz.Core.Lua.LuaClassBehaviour" preserve="all"/>
-		<type fullname="Tutorial.DerivedClass+TestEnumInner" preserve="all"/>
-		<type fullname="ManagerComponent" preserve="all"/>
-		<type fullname="test" preserve="all"/>
-		<type fullname="ExampleGenConfig" preserve="all"/>
-		<type fullname="LuaCallCs" preserve="all"/>
-		<type fullname="Tutorial.CSCallLua" preserve="all"/>
-		<type fullname="Tutorial.ByFile" preserve="all"/>
-		<type fullname="Tutorial.ByString" preserve="all"/>
-		<type fullname="Tutorial.CustomLoader" preserve="all"/>
-		<type fullname="Tutorial.Param1" preserve="all"/>
-		<type fullname="xLuaMVVM.Assets.MVVM.Wrap.Text" preserve="all"/>
-		<type fullname="Core.BaseObject" preserve="all"/>
-		<type fullname="Core.Utils.Utils" preserve="all"/>
-		<type fullname="Mapz.Config" preserve="all"/>
-		<type fullname="Mapz.GameEntry" preserve="all"/>
-		<type fullname="Mapz.Core.GameMain" preserve="all"/>
-		<type fullname="Mapz.Core.Resource.FileUtil" preserve="all"/>
-		<type fullname="Mapz.Core.Lua.XLuaExtentions" preserve="all"/>
-		<type fullname="Mapz.Core.Lua.Injection" preserve="all"/>
-		<type fullname="Mapz.Core.Component.LuaManager" preserve="all"/>
-		<type fullname="Mapz.Core.Component.ResManager" preserve="all"/>
-		<type fullname="Mapz.Core.Component.TimerManager" preserve="all"/>
-		<type fullname="Tutorial.CSCallLua+DClass" preserve="all"/>
 		
 	</assembly>
 

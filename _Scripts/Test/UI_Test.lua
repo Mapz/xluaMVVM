@@ -22,54 +22,56 @@ function UI_Test:Start()
         function()
             DataCenter.Player:UnBind("HP", self._inject.TestText:GetComponent("Text"), "text")
         end,
-        3,
+        2,
         1,
         TimerTypes.Common,
         false
     )
 
+    -- TimerManager.Create(
+    --     function()
+    --         DataCenter.Player:BindTwoWay("HP", self._inject.TestText:GetComponent("Text"), "text")
+    --     end,
+    --     5,
+    --     1,
+    --     TimerTypes.Common,
+    --     false
+    -- )
+
+    -- TimerManager.Create(
+    --     function()
+    --         DataCenter.Player:UnBind("HPPercent", self._inject.TestText2:GetComponent("Text"), "text")
+    --     end,
+    --     8,
+    --     1,
+    --     TimerTypes.Common,
+    --     false
+    -- )
+
+    -- TimerManager.Create(
+    --     function()
+    --         DataCenter.Player:Bind("HPPercent", self._inject.TestText2:GetComponent("Text"), "text")
+    --     end,
+    --     12,
+    --     1,
+    --     TimerTypes.Common,
+    --     false
+    -- )
+
     TimerManager.Create(
         function()
-            DataCenter.Player:Bind("HP", self._inject.TestText:GetComponent("Text"), "text")
+            self._inject.TestText:GetComponent("Text").text = 500
         end,
         5,
         1,
         TimerTypes.Common,
         false
     )
-
-    TimerManager.Create(
-        function()
-            DataCenter.Player:UnBind("HPPercent", self._inject.TestText2:GetComponent("Text"), "text")
-        end,
-        8,
-        1,
-        TimerTypes.Common,
-        false
-    )
-
-    TimerManager.Create(
-        function()
-            DataCenter.Player:Bind("HPPercent", self._inject.TestText2:GetComponent("Text"), "text")
-        end,
-        12,
-        1,
-        TimerTypes.Common,
-        false
-    )
-
-    TimerManager.Create(
-        function()
-            self._inject.TestText:GetComponent("Text").text = 500
-        end,
-        10,
-        1,
-        TimerTypes.Common,
-        false
-    )
 end
 
-
+function UI_Test:update()
+    print(DataCenter.Player:Get("HP"))
+end
 
 function UI_Test:BindData()
     return {

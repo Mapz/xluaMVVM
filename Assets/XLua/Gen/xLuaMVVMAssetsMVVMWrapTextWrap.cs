@@ -21,8 +21,9 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(xLuaMVVM.Assets.MVVM.Wrap.Text);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 2, 2);
+			Utils.BeginObjectRegister(type, L, translator, 0, 1, 2, 2);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPid", _m_GetPid);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "text", _g_get_text);
@@ -74,6 +75,34 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetPid(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                xLuaMVVM.Assets.MVVM.Wrap.Text gen_to_be_invoked = (xLuaMVVM.Assets.MVVM.Wrap.Text)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        int gen_ret = gen_to_be_invoked.GetPid(  );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         
         

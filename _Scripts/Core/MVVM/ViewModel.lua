@@ -3,6 +3,7 @@ ViewModel = newclass("ViewModel")
 function ViewModel:init(initData, deepCopy, preventExtensions)
     self._data = {}
     self._watchers = {}
+    self.id = GenID()
     if initData then
         if deepCopy then
             self._data = DeepCopy(initData)
@@ -19,15 +20,15 @@ function ViewModel:init(initData, deepCopy, preventExtensions)
 end
 
 function ViewModel:Get(key)
-    print("self._data:" .. table.tostring(self._data, 5))
-    print("meta self._data:" .. table.tostring(getmetatable(self._data)))
-    print("key:"..key)
-    print("self._data[key]:" .. tostring(self._data[key]))
     return self._data[key]
 end
 
 function ViewModel:Set(key, val)
     self.ob:set(self._data, key, val)
+end
+
+function ViewModel:GetBindKey(key)
+    return tostring(self.id) .. key
 end
 
 function ViewModel:BindTwoWay(key, obj, property, onChangeCallback, getter)
@@ -36,7 +37,7 @@ function ViewModel:BindTwoWay(key, obj, property, onChangeCallback, getter)
         return
     end
     self:Bind(key, obj, property, onChangeCallback)
-    AddWatch(
+    CSharpWatchManager:AddWatch(
         obj,
         property,
         function(oldValue, newValue)
@@ -45,7 +46,8 @@ function ViewModel:BindTwoWay(key, obj, property, onChangeCallback, getter)
                 return
             end
             self._data[key] = newValue
-        end
+        end,
+        self:GetBindKey(key)
     )
 end
 
@@ -77,9 +79,8 @@ end
 function ViewModel:UnBind(key, obj, property)
     if obj and property then
         self._watchers[key][obj][property]:destroy()
+        CSharpWatchManager:RemoveWatch(obj, property, self:GetBindKey(key))
         return
     end
-
-    -- TODO Also Unbind C# to lua
     self.ob:delete(self._data, key)
 end
