@@ -2,15 +2,15 @@ UI_Test = newclass("UI_Test", UIBase)
 
 function UI_Test:init(data)
     self.super:init(data)
-    self.data.TimeStr = "开始"
 end
 
 function UI_Test:Start()
-    local int = 0
     TimerManager.Create(
         function()
-            self._data.text = "测试绑定" .. tostring(int)
-            int = int + 1
+            local curHP = DataCenter.Player:Get("HP")
+            if curHP then
+                DataCenter.Player:Set("HP", curHP + 1)
+            end
         end,
         1,
         2000,
@@ -20,7 +20,47 @@ function UI_Test:Start()
 
     TimerManager.Create(
         function()
-            self._inject.TestText:GetComponent("Text").text = "测试双向绑定"
+            DataCenter.Player:UnBind("HP", self._inject.TestText:GetComponent("Text"), "text")
+        end,
+        3,
+        1,
+        TimerTypes.Common,
+        false
+    )
+
+    TimerManager.Create(
+        function()
+            DataCenter.Player:Bind("HP", self._inject.TestText:GetComponent("Text"), "text")
+        end,
+        5,
+        1,
+        TimerTypes.Common,
+        false
+    )
+
+    TimerManager.Create(
+        function()
+            DataCenter.Player:UnBind("HPPercent", self._inject.TestText2:GetComponent("Text"), "text")
+        end,
+        8,
+        1,
+        TimerTypes.Common,
+        false
+    )
+
+    TimerManager.Create(
+        function()
+            DataCenter.Player:Bind("HPPercent", self._inject.TestText2:GetComponent("Text"), "text")
+        end,
+        12,
+        1,
+        TimerTypes.Common,
+        false
+    )
+
+    TimerManager.Create(
+        function()
+            self._inject.TestText:GetComponent("Text").text = 500
         end,
         10,
         1,
@@ -29,50 +69,24 @@ function UI_Test:Start()
     )
 end
 
-function UI_Test:update()
-    if (self._modelData and self._modelData.textComputed) then
-        print("self._modelData.textComputed:" .. self._modelData.textComputed)
-    end
 
-    -- self.TimeStr = tostring(os.clock())
-end
 
-function UI_Test:ModelData()
+function UI_Test:BindData()
     return {
-        text = {
-            viewObjects = {
-                {
-                    GO = "TestText",
-                    component = "Text",
-                    property = "text"
-                }
-            },
-            default = "测试绑定"
-        }
-    }
-end
-
--- 绑定计算 -- Computed 后面准备用代码生成来制作
-function UI_Test:Computed()
-    return {
-        textComputed = {
-            viewObjects = {
-                {
-                    GO = "TestText2",
-                    component = "Text",
-                    property = "text"
-                }
-            },
-            func = function(this)
-                print("text:" .. tostring(this.text))
-                print("TimeStr:" .. tostring(this.TimeStr))
-                print("table:" .. table.tostring(this))
-                print("table Meta:" .. table.tostring(getmetatable(this)))
-
-                return this.text and this.text.." + Computed 属性"
-
-               
-            end
+        {
+            twoWay = true,
+            GO = "TestText",
+            component = "Text",
+            componentProperty = "text",
+            bindData = DataCenter.Player,
+            bindProperty = "HP"
+        },
+        {
+            GO = "TestText2",
+            component = "Text",
+            componentProperty = "text",
+            bindData = DataCenter.Player,
+            bindProperty = "HPPercent"
         }
     }
 end

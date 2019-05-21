@@ -2,20 +2,19 @@
     参考（照抄） Vue 源码实现的 Lua MVVM
     @Chenhui 2019-5-17
 ]]
-
 -- Dep Begin
 local Dep = newclass("Dep")
 local DepUid = 0
 local DepTarget = nil
 
 function Dep:init()
-    self.subs = Stack.Create()
+    self.subs = {}
     self.id = DepUid
     DepUid = DepUid + 1
 end
 
 function Dep:addSub(sub)
-    self.subs:push(sub)
+    table.insert(self.subs, sub)
 end
 
 function Dep:depend()
@@ -25,9 +24,22 @@ function Dep:depend()
 end
 
 function Dep:notify()
-    for _, sub in ipairs(self.subs._et) do
+    for _, sub in ipairs(self.subs) do
         sub:update()
     end
+end
+
+function Dep:removeWatch(id, dataTable)
+    table.removeTableData(
+        dataTable and dataTable or self.subs,
+        function(data)
+            return data.id == id
+        end,
+        function(data)
+            print("data:" .. table.tostring(data))
+            Dep:removeWatch(id, data.subs.deps)
+        end
+    )
 end
 
 local targetStack = Stack.Create()
@@ -76,6 +88,20 @@ function Watcher:init(vm, getter, callBack, options)
     else
         self.value = self:get()
     end
+end
+
+local EmptyFunc = function()
+end
+
+function Watcher:destroy()
+    --remove deps
+    self.deps = {}
+    self.newDeps = {}
+    self.depIds = Set.Create()
+    self.newDepIds = Set.Create()
+    self.getter = EmptyFunc
+    self.callBack = EmptyFunc
+    self = nil
 end
 
 function Watcher:get()
@@ -139,6 +165,30 @@ function Observer:walk(value)
     end
 end
 
+function Observer:set(target, key, value)
+    if DefineProperty.hasProperty(target, key) then
+        target[key] = value
+        return value
+    end
+    local ob = target.__ob__
+    DefineProperty.defineReactive(ob.value, key, value)
+    ob.dep:notify()
+    return value
+end
+
+function Observer:delete(target, key)
+    local ob = target.__ob__
+
+    if not DefineProperty.hasProperty(target, key) then
+        return
+    end
+    DefineProperty.delete(target, key)
+    if not ob then
+        return
+    end
+    ob.dep:notify()
+end
+
 function observe(value)
     if type(value) ~= "table" then
         return
@@ -185,21 +235,21 @@ local sharedPropertyDefinition = {
 InitComputed = newclass("InitComputed")
 
 -- 创建计算监听
-function InitComputed:init(vm, computed)
+function InitComputed:init(vm)
     self._computedWatchers = {}
-    local watchers = self._computedWatchers
-    for i, v in pairs(computed) do
-        local getter = v.func
-        watchers[i] = Watcher(vm, getter, v.callBack, computedWatcherOptions)
-        if not DefineProperty.hasProperty(vm, i) then
-            self:defineComputed(vm, i, v)
-        else
-            error("不可以用 Computed 覆盖 Data ：" .. i)
-        end
+    self.vm = vm
+end
+
+function InitComputed:bind(key, getter, callBack)
+    self._computedWatchers[key] = Watcher(self.vm, getter, callBack, computedWatcherOptions)
+    if not DefineProperty.hasProperty(self.vm, key) then
+        self:defineComputed(self.vm, key)
+    else
+        error("不可以用 Computed 覆盖 Data ：" .. key)
     end
 end
 
-function InitComputed:defineComputed(target, key, userDef)
+function InitComputed:defineComputed(target, key)
     sharedPropertyDefinition.get = self:createComputedGetter(key)
     sharedPropertyDefinition.set = noop
     DefineProperty.defineProperty(target, key, sharedPropertyDefinition)

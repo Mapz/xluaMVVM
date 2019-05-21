@@ -1,6 +1,15 @@
 unpack = table.unpack or unpack
 
+App = {
+    debug = true
+}
+
 local scriptLoadList = {
+    -- Debug
+    "Debug.DebugSettings",
+
+    -- Core
+    {"Profiler", "Debug.profiler", "Debug"},
     "Core.Stack",
     "Core.Set",
     "Utils.LuaUtils",
@@ -10,16 +19,26 @@ local scriptLoadList = {
     "Utils.MVVMUtils",
     "Utils.CSharpSetterBind",
     "Core.UI.UIManager",
-    "Core.LuaViewModelBehaviorBase",
+    "Core.MVVM.ViewModel",
+    "Core.MVVM.DataClassBase",
+
+    -- DataClass
+    "DataClass.PlayerData",
+
+    -- Init
+    "Logic.DataCenter",
     "Core.UI.UIBase",
-    "Utils.Timer"
+    "Utils.Timer",
+    
 }
 
 -- 按照顺序来加载脚本
 local function LoadScripts()
     for _, v in ipairs(scriptLoadList) do
         if type(v) == "table" then
-            _G[v[1]] = require(v[2])
+            if (App.debug and v[3]) or (v[3] == nil) then
+                _G[v[1]] = require(v[2])
+            end
         else
             require(v)
         end

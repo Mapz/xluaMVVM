@@ -81,7 +81,7 @@ local function initgetset(table)
     end
     mt.__index = getset__index
     mt.__newindex = getset__newindex
-    
+
     rawset(
         table,
         "__getset",
@@ -193,6 +193,15 @@ function getset.hasProperty(table, key)
         return false
     end
     return gs.hasProperty[key]
+end
+
+function getset.delete(table, key)
+    local gs = table.__getset
+    if not gs then
+        return false
+    end
+    gs.descriptors[key] = nil
+    gs.hasProperty[key] = false
 end
 
 return getset

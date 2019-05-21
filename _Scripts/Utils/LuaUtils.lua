@@ -68,3 +68,37 @@ function table.tostring(t, _n)
     end
     return _t:_tostring(t, 0)
 end
+
+function DeepCopy(object)
+    local SearchTable = {}
+
+    local function Func(object)
+        if type(object) ~= "table" then
+            return object
+        end
+        local NewTable = {}
+        SearchTable[object] = NewTable
+        for k, v in pairs(object) do
+            NewTable[Func(k)] = Func(v)
+        end
+
+        return setmetatable(NewTable, getmetatable(object))
+    end
+
+    return Func(object)
+end
+
+function table.removeTableData(tb, conditionFunc, elseFunc)
+    -- body
+    if tb ~= nil and next(tb) ~= nil then
+        -- todo
+        for i = #tb, 1, -1 do
+            if conditionFunc(tb[i]) then
+                -- todo
+                table.remove(tb, i)
+            else
+                elseFunc(tb[i])
+            end
+        end
+    end
+end
