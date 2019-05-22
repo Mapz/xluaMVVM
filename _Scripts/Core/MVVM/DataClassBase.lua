@@ -25,12 +25,12 @@ function DataClassBase:InitBindData()
     self.computeTable = self:Computed()
 end
 
-function DataClassBase:Bind(key, obj, property, callBack)
+function DataClassBase:Bind(key, obj, property, callBack, getter)
     if obj == nil or property == nil then
         error("绑定的对象或属性为空，绑定失败：" .. tostring(obj) .. "   " .. tostring(property))
         return
     end
-    self.vm:Bind(key, obj, property, callBack, self.computeTable[key])
+    self.vm:Bind(key, obj, property, callBack, getter or self.computeTable[key])
 end
 
 function DataClassBase:BindTwoWay(key, obj, property, callBack)

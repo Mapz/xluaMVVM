@@ -7,9 +7,10 @@ end
 function UI_Test:Start()
     TimerManager.Create(
         function()
-            local curHP = DataCenter.Player:Get("HP")
-            if curHP then
-                DataCenter.Player:Set("HP", curHP + 1)
+            local curItems = DataCenter.Player:Get("Items")
+            if curItems then
+                curItems[1].Name = "fasd"
+                curItems[1].Count = 500
             end
         end,
         1,
@@ -18,15 +19,15 @@ function UI_Test:Start()
         false
     )
 
-    TimerManager.Create(
-        function()
-            DataCenter.Player:UnBind("HP", self._inject.TestText:GetComponent("Text"), "text")
-        end,
-        2,
-        1,
-        TimerTypes.Common,
-        false
-    )
+    -- TimerManager.Create(
+    --     function()
+    --         DataCenter.Player:UnBind("HP", self._inject.TestText:GetComponent("Text"), "text")
+    --     end,
+    --     2,
+    --     1,
+    --     TimerTypes.Common,
+    --     false
+    -- )
 
     -- TimerManager.Create(
     --     function()
@@ -58,37 +59,57 @@ function UI_Test:Start()
     --     false
     -- )
 
-    TimerManager.Create(
-        function()
-            self._inject.TestText:GetComponent("Text").text = 500
-        end,
-        5,
-        1,
-        TimerTypes.Common,
-        false
-    )
+    -- TimerManager.Create(
+    --     function()
+    --         self._inject.TestText:GetComponent("Text").text = 500
+    --     end,
+    --     5,
+    --     1,
+    --     TimerTypes.Common,
+    --     false
+    -- )
 end
 
 function UI_Test:update()
-    print(DataCenter.Player:Get("HP"))
+    print("ajdflaskjdflasdjf         " .. (DataCenter.Player:Get("Items")[1]["Name"]))
 end
 
 function UI_Test:BindData()
     return {
         {
             twoWay = true,
-            GO = "TestText",
+            BaseGO = "TestText",
             component = "Text",
             componentProperty = "text",
             bindData = DataCenter.Player,
             bindProperty = "HP"
         },
         {
-            GO = "TestText2",
+            BaseGO = "TestText2",
             component = "Text",
             componentProperty = "text",
             bindData = DataCenter.Player,
             bindProperty = "HPPercent"
+        },
+        {
+            BaseGO = "ListContent",
+            listItem = "item",
+            bindProperty = "Items",
+            bindData = DataCenter.Player,
+            listDescriptsions = {
+                {
+                    path = "ListText",
+                    component = "Text",
+                    componentProperty = "text",
+                    bindProperty = "Name"
+                },
+                {
+                    path = "ListText/ChildText",
+                    component = "Text",
+                    componentProperty = "text",
+                    bindProperty = "Count"
+                }
+            }
         }
     }
 end

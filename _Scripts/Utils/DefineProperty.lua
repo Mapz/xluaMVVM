@@ -81,6 +81,10 @@ local function initgetset(table)
     end
     mt.__index = getset__index
     mt.__newindex = getset__newindex
+    --mapz override #
+    mt.__len = function()
+        return #(table.__getset.descriptors)
+    end
 
     rawset(
         table,
@@ -202,6 +206,21 @@ function getset.delete(table, key)
     end
     gs.descriptors[key] = nil
     gs.hasProperty[key] = false
+end
+
+-- Mapz Walk
+function getset.walk(table)
+    local gs = table.__getset
+    if not gs then
+        return nil
+    end
+    local index
+    local v
+    return function()
+        index = next(gs.descriptors, index)
+        v = table[index]
+        return index, v
+    end
 end
 
 return getset

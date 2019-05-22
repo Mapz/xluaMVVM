@@ -1,15 +1,20 @@
 ViewModel = newclass("ViewModel")
 
-function ViewModel:init(initData, deepCopy, preventExtensions)
+local isList = "__list"
+
+function ViewModel:init(initData, initMode, preventExtensions)
     self._data = {}
     self._watchers = {}
     self.id = GenID()
     if initData then
-        if deepCopy then
+        if initMode == "DeepCopy" then
             self._data = DeepCopy(initData)
         else
             self._data = initData
         end
+    end
+    if initMode and initMode == "Part" then
+        return
     end
     self.ob = observe(self._data)
     self.computedComponent = InitComputed(self._data)
@@ -33,10 +38,13 @@ end
 
 function ViewModel:BindTwoWay(key, obj, property, onChangeCallback, getter)
     if getter then
-        error("不能双向绑定计算属性")
+        error("自定义Getter暂不能双绑定")
         return
     end
     self:Bind(key, obj, property, onChangeCallback)
+    if property == isList then
+        return
+    end
     CSharpWatchManager:AddWatch(
         obj,
         property,
@@ -60,7 +68,9 @@ function ViewModel:Bind(key, obj, property, onChangeCallback, getter)
                 return vm[key]
             end,
         function(vm, oldVal, val)
-            obj[property] = val
+            if property ~= isList then
+                obj[property] = val
+            end
             if onChangeCallback then
                 onChangeCallback(vm, oldVal, val)
             end
@@ -79,7 +89,9 @@ end
 function ViewModel:UnBind(key, obj, property)
     if obj and property then
         self._watchers[key][obj][property]:destroy()
-        CSharpWatchManager:RemoveWatch(obj, property, self:GetBindKey(key))
+        if property ~= isList then
+            CSharpWatchManager:RemoveWatch(obj, property, self:GetBindKey(key))
+        end
         return
     end
     self.ob:delete(self._data, key)

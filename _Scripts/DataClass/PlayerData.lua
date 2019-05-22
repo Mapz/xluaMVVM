@@ -6,7 +6,20 @@ function PlayerData:Data()
         Level = 1,
         Attack = 5,
         Treasure = 100,
-        MaxHP = 1000
+        MaxHP = 1000,
+        Items = {
+            __list = true,
+            default = {
+                {
+                    Name = "Name1",
+                    Count = 5
+                },
+                {
+                    Name = "Name2",
+                    Count = 10
+                }
+            }
+        }
     }
 end
 

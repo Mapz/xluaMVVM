@@ -12,18 +12,24 @@ end
 
 function UIBase:Bind()
     for _, bindData in pairs(self:BindData()) do
-        if bindData.twoWay then
-            bindData.bindData:BindTwoWay(
-                bindData.bindProperty,
-                self._inject[bindData.GO]:GetComponent(bindData.component),
-                bindData.componentProperty
-            )
+        --Check Is List
+        if bindData.listItem then
+            UIList(self, bindData)
         else
-            bindData.bindData:Bind(
-                bindData.bindProperty,
-                self._inject[bindData.GO]:GetComponent(bindData.component),
-                bindData.componentProperty
-            )
+            --Else
+            if bindData.twoWay then
+                bindData.bindData:BindTwoWay(
+                    bindData.bindProperty,
+                    self._inject[bindData.BaseGO]:GetComponent(bindData.component),
+                    bindData.componentProperty
+                )
+            else
+                bindData.bindData:Bind(
+                    bindData.bindProperty,
+                    self._inject[bindData.BaseGO]:GetComponent(bindData.component),
+                    bindData.componentProperty
+                )
+            end
         end
     end
 end

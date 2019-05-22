@@ -28,6 +28,7 @@ local scriptLoadList = {
     -- Init
     "Logic.DataCenter",
     "Core.UI.UIBase",
+    "Core.UI.UIList",
     "Utils.Timer",
     
 }

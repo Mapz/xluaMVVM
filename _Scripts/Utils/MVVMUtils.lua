@@ -159,7 +159,7 @@ end
 
 function Observer:walk(value)
     for k, v in pairs(value) do
-        if not (k == "__ob__" or k == "__getset") then
+        if not (string.sub(k, 1, 2) == "__") then
             defineReactive(value, k, v)
         end
     end
